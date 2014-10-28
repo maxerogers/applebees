@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #use system to get the process messages for the user
 #use `` for quick process messages and need the return as a string
-require 'colorize'
+#require 'colorize' #This could add some color to the std outputs
 
 class Tuesday
   #Menu hash
@@ -114,6 +114,30 @@ class Tuesday
       timeout 30"
   end
 
+  def self.make_unicorn_for_nginx(app_name,path,domain_name)
+"upstream #{app_name} {
+  # Path to Unicorn SOCK file, as defined previously
+  server unix:/tmp/unicorn.#{app_name}.sock fail_timeout=0;
+}
+server {
+  listen 80;
+  # Set the server name, similar to Apache's settings
+  server_name localhost #{app_name}.#{domain_name};
+  # Application root, as defined previously
+  root #{path}/public;
+  try_files $uri/index.html $uri @#{app_name};
+  location @#{app_name} {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_redirect off;
+      proxy_pass http://#{app_name};
+  }
+  error_page 500 502 503 504 /500.html;
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+}"
+  end
+
   def self.configure
     #kill the old version of this server
     if @@menu[:webserver] == "puma" || @@menu[:webserver] == "unicorn"
@@ -152,6 +176,9 @@ class Tuesday
   end
   def self.restart_servers
     #system "service nginx restart"
+    str = make_unicorn_for_nginx(@@menu[:app_name],@@menu[:path],@@menu[:domain])
+    File.open("/etc/nginx/conf.d/default.conf", 'w') { |file| file.write("#{str}") }
+    system "service nginx restart"
   end
 
   def self.stockKitchen
