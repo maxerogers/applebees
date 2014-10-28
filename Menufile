@@ -1,4 +1,4 @@
 domain: "maxrogers.me",
-webserver: "puma",
-app_type: "unicorn",
+webserver: "unicorn",
+app_type: "sinatra",
 database: "mongodb"
