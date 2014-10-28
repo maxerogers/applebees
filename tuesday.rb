@@ -214,13 +214,17 @@ server {
 	 puts "Welcome to Ruby-Tuesdays.rb"
    puts "Please note, currently Tuesday kills all free roaming daemons before releasing the new ones."
    #Check if it needs to restart
+  if ARGV[0] == "reset"
+    reset
+  else
+    #otherwise
+    readMenu
+    stockKitchen
+    installs
+    configure
+    restart_servers
+  end
 
-   #otherwise
-   readMenu
-   stockKitchen
-   installs
-   configure
-   restart_servers
   end
 end
 
