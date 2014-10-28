@@ -4,11 +4,13 @@
 require 'colorize'
 
 class Tuesday
-  #kitchen
-  #domain
-  #app_type
-  #path
-  #databases
+  #Menu hash
+    #domain
+    #app_type
+    #path
+    #database
+    #webserver
+    #pid
   @@kitchen_path = "/usr/local/bin/kitchen"
   def self.kitchen_path
     @@kitchen_path
@@ -88,25 +90,82 @@ class Tuesday
       puts "It appears you are missing or have a corrupt Menufile. Please consult http://tuesdayrb.me for support"
       abort
     end
-    @@menu[:path] = `pwd`
+    @@menu[:path] = `pwd`.strip
     @@menu[:domain].downcase!
     @@menu[:webserver].downcase!
     @@menu[:database].downcase!
   end
 
+  def self.make_unicorn(app_name,path)
+    "working_directory '#{path}'
+
+      pid '#{path}/pids/unicorn.pid'
+
+      stderr_path '#{path}/logs/unicorn.log'
+      stdout_path '#{path}/logs/unicorn.log'
+
+      listen '/tmp/unicorn.#{app_name}.sock'
+
+      # Number of processes
+      # worker_processes 4
+      worker_processes 1
+
+      # Time-out
+      timeout 30"
+  end
+
   def self.configure
     #kill the old version of this server
-    #set up the new version
+    if @@menu[:webserver] == "puma" || @@menu[:webserver] == "unicorn"
+      #kill the old process
+      if @@kitchen[@@menu[:path]]
+        #system "kill #{@@kitchen[@@menu[:path]][:pid]}"
+        #@@kitchen.delete(@@menu[:path])
+      end
+    end
+    #create the new server
+    output = `pwd`
+    app_name = output.split("/").last
+    app_name.strip!
+    @@menu[:app_name] = app_name
+    case @@menu[:webserver]
+    when "unicorn"
+      File.open("#{@@menu[:path]}/unicorn.rb", 'w') { |file| file.write("#{make_unicorn app_name, @@menu[:path]}") }
+      system "mkdir #{@@menu[:path]}/pids"
+      system "chown +w #{@@menu[:path]}/pids"
+      system "mkdir #{@@menu[:path]}/logs"
+      system "chown +w #{@@menu[:path]}/logs"
+      system "unicorn -c #{@@menu[:path]}/unicorn.rb -D"
+    else
+      puts "Something went wrong in the new server creation...."
+      abort
+    end
     #store it in kitchen
+    @@kitchen[@@menu[:path]] = @@menu
+    File.open(@@kitchen_path, 'w') { |file| file.write("#{@@kitchen}") }
   end
   def self.restart_servers
-    #run this new server
     #system "service nginx restart"
+  end
+
+  def self.stockKitchen
+    puts "Stocking the kitchen"
+    str = ""
+    File.open(@@kitchen_path).each do |f|
+      str += f
+    end
+    #puts str
+    @@kitchen = eval str
+    @@kitchen ||= {}
+    puts @@kitchen
+    #@@kitchen = {chicken: "Good"}
+    #File.open(@@kitchen_path, 'w') { |file| file.write("") }
   end
 
   def self.run
 	 puts "Welcome to Ruby-Tuesdays	"
    readMenu
+   stockKitchen
    installs
    configure
    restart_servers
