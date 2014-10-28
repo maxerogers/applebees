@@ -132,9 +132,9 @@ class Tuesday
     when "unicorn"
       File.open("#{@@menu[:path]}/unicorn.rb", 'w') { |file| file.write("#{make_unicorn app_name, @@menu[:path]}") }
       system "mkdir #{@@menu[:path]}/pids"
-      system "chown +w #{@@menu[:path]}/pids"
+      system "chown nobody:nogroup -R #{@@menu[:path]}/pids"
       system "mkdir #{@@menu[:path]}/logs"
-      system "chown +w #{@@menu[:path]}/logs"
+      system "chown nobody:nogroup -R #{@@menu[:path]}/logs"
       system "unicorn -c #{@@menu[:path]}/unicorn.rb -D"
     else
       puts "Something went wrong in the new server creation...."
