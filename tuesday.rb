@@ -136,6 +136,12 @@ class Tuesday
       system "mkdir #{@@menu[:path]}/logs"
       system "chown nobody:nogroup -R #{@@menu[:path]}/logs"
       system "unicorn -c #{@@menu[:path]}/unicorn.rb -D"
+      #now store the newly created pid
+      str = ""
+      File.open("#{@@menu[:path]}/pids/unicorn.pid", 'r') do |file|
+        str += file
+      end
+      @@menu[:pid] = str.strip
     else
       puts "Something went wrong in the new server creation...."
       abort
