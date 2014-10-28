@@ -138,8 +138,8 @@ class Tuesday
       system "unicorn -c #{@@menu[:path]}/unicorn.rb -D"
       #now store the newly created pid
       str = ""
-      File.open("#{@@menu[:path]}/pids/unicorn.pid") do |file|
-        str += file
+      File.open("#{@@menu[:path]}/pids/unicorn.pid", "r").each_line do |line|
+        str += line
       end
       @@menu[:pid] = str.strip
     else

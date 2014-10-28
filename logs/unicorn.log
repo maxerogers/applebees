@@ -47,3 +47,99 @@ I, [2014-10-28T13:18:32.873083 #7007]  INFO -- : master process ready
 I, [2014-10-28T13:18:32.886366 #7010]  INFO -- : worker=0 spawned pid=7010
 I, [2014-10-28T13:18:32.886644 #7010]  INFO -- : Refreshing Gem list
 I, [2014-10-28T13:18:33.104668 #7010]  INFO -- : worker=0 ready
+E, [2014-10-28T13:25:45.513590 #27264] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:25:45.514422 #27264] ERROR -- : retrying in 0.5 seconds (4 tries left)
+E, [2014-10-28T13:25:46.016608 #27264] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:25:46.017020 #27264] ERROR -- : retrying in 0.5 seconds (3 tries left)
+E, [2014-10-28T13:25:46.518950 #27264] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:25:46.519244 #27264] ERROR -- : retrying in 0.5 seconds (2 tries left)
+E, [2014-10-28T13:25:47.020568 #27264] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:25:47.021030 #27264] ERROR -- : retrying in 0.5 seconds (1 tries left)
+E, [2014-10-28T13:25:47.522601 #27264] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:25:47.522990 #27264] ERROR -- : retrying in 0.5 seconds (0 tries left)
+E, [2014-10-28T13:25:48.025023 #27264] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+/Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `initialize': Address already in use - connect(2) for "/tmp/unicorn.applebees.sock" (Errno::EADDRINUSE)
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `new'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `bind_listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:242:in `listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `block in bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `each'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:138:in `start'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+E, [2014-10-28T13:26:24.385463 #27318] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:26:24.385881 #27318] ERROR -- : retrying in 0.5 seconds (4 tries left)
+E, [2014-10-28T13:26:24.886952 #27318] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:26:24.887298 #27318] ERROR -- : retrying in 0.5 seconds (3 tries left)
+E, [2014-10-28T13:26:25.389395 #27318] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:26:25.389802 #27318] ERROR -- : retrying in 0.5 seconds (2 tries left)
+E, [2014-10-28T13:26:25.891849 #27318] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:26:25.892342 #27318] ERROR -- : retrying in 0.5 seconds (1 tries left)
+E, [2014-10-28T13:26:26.393346 #27318] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:26:26.393685 #27318] ERROR -- : retrying in 0.5 seconds (0 tries left)
+E, [2014-10-28T13:26:26.895609 #27318] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+/Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `initialize': Address already in use - connect(2) for "/tmp/unicorn.applebees.sock" (Errno::EADDRINUSE)
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `new'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `bind_listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:242:in `listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `block in bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `each'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:138:in `start'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+E, [2014-10-28T13:27:34.585519 #27382] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:34.585872 #27382] ERROR -- : retrying in 0.5 seconds (4 tries left)
+E, [2014-10-28T13:27:35.087498 #27382] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:35.087965 #27382] ERROR -- : retrying in 0.5 seconds (3 tries left)
+E, [2014-10-28T13:27:35.588946 #27382] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:35.589296 #27382] ERROR -- : retrying in 0.5 seconds (2 tries left)
+E, [2014-10-28T13:27:36.091057 #27382] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:36.091262 #27382] ERROR -- : retrying in 0.5 seconds (1 tries left)
+E, [2014-10-28T13:27:36.593780 #27382] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:36.594126 #27382] ERROR -- : retrying in 0.5 seconds (0 tries left)
+E, [2014-10-28T13:27:37.096118 #27382] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+/Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `initialize': Address already in use - connect(2) for "/tmp/unicorn.applebees.sock" (Errno::EADDRINUSE)
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `new'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `bind_listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:242:in `listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `block in bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `each'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:138:in `start'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+E, [2014-10-28T13:27:47.866137 #27419] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:47.866523 #27419] ERROR -- : retrying in 0.5 seconds (4 tries left)
+E, [2014-10-28T13:27:48.368647 #27419] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:48.369031 #27419] ERROR -- : retrying in 0.5 seconds (3 tries left)
+E, [2014-10-28T13:27:48.871169 #27419] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:48.871517 #27419] ERROR -- : retrying in 0.5 seconds (2 tries left)
+E, [2014-10-28T13:27:49.373568 #27419] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:49.374010 #27419] ERROR -- : retrying in 0.5 seconds (1 tries left)
+E, [2014-10-28T13:27:49.874943 #27419] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+E, [2014-10-28T13:27:49.875422 #27419] ERROR -- : retrying in 0.5 seconds (0 tries left)
+E, [2014-10-28T13:27:50.377668 #27419] ERROR -- : adding listener failed addr=/tmp/unicorn.applebees.sock (in use)
+/Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `initialize': Address already in use - connect(2) for "/tmp/unicorn.applebees.sock" (Errno::EADDRINUSE)
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `new'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/socket_helper.rb:158:in `bind_listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:242:in `listen'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `block in bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `each'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:809:in `bind_new_listeners!'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:138:in `start'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'

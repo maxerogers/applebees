@@ -1,9 +1,9 @@
-working_directory '/var/www/applebees'
+working_directory '/Users/maxrogers/Dev/applebees'
 
-      pid '/var/www/applebees/pids/unicorn.pid'
+      pid '/Users/maxrogers/Dev/applebees/pids/unicorn.pid'
 
-      stderr_path '/var/www/applebees/logs/unicorn.log'
-      stdout_path '/var/www/applebees/logs/unicorn.log'
+      stderr_path '/Users/maxrogers/Dev/applebees/logs/unicorn.log'
+      stdout_path '/Users/maxrogers/Dev/applebees/logs/unicorn.log'
 
       listen '/tmp/unicorn.applebees.sock'
 
