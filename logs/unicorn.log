@@ -1,0 +1,49 @@
+I, [2014-10-28T13:11:37.826283 #26260]  INFO -- : listening on addr=/tmp/unicorn.applebees.sock fd=10
+I, [2014-10-28T13:11:37.826826 #26260]  INFO -- : worker=0 spawning...
+I, [2014-10-28T13:11:37.827739 #26260]  INFO -- : master process ready
+I, [2014-10-28T13:11:37.829591 #26261]  INFO -- : worker=0 spawned pid=26261
+I, [2014-10-28T13:11:37.830420 #26261]  INFO -- : Refreshing Gem list
+I, [2014-10-28T13:11:38.080344 #26261]  INFO -- : worker=0 ready
+/Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:206:in `pid=': Already running on PID:26260 (or pid=/Users/maxrogers/Dev/applebees/pids/unicorn.pid is stale) (ArgumentError)
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:135:in `start'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+/Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:206:in `pid=': Already running on PID:26260 (or pid=/Users/maxrogers/Dev/applebees/pids/unicorn.pid is stale) (ArgumentError)
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:135:in `start'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+/Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:206:in `pid=': Already running on PID:26260 (or pid=/Users/maxrogers/Dev/applebees/pids/unicorn.pid is stale) (ArgumentError)
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:135:in `start'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maxrogers/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+I, [2014-10-28T13:14:23.913345 #6778]  INFO -- : listening on addr=/tmp/unicorn.applebees.sock fd=10
+I, [2014-10-28T13:14:23.914101 #6778]  INFO -- : worker=0 spawning...
+I, [2014-10-28T13:14:23.915828 #6778]  INFO -- : master process ready
+I, [2014-10-28T13:14:23.930915 #6781]  INFO -- : worker=0 spawned pid=6781
+I, [2014-10-28T13:14:23.931288 #6781]  INFO -- : Refreshing Gem list
+I, [2014-10-28T13:14:24.195096 #6781]  INFO -- : worker=0 ready
+/usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:206:in `pid=': Already running on PID:6778 (or pid=/var/www/applebees/pids/unicorn.pid is stale) (ArgumentError)
+	from /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/unicorn-4.8.3/lib/unicorn/http_server.rb:135:in `start'
+	from /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/unicorn-4.8.3/bin/unicorn:126:in `<top (required)>'
+	from /usr/local/rvm/gems/ruby-2.1.2/bin/unicorn:23:in `load'
+	from /usr/local/rvm/gems/ruby-2.1.2/bin/unicorn:23:in `<main>'
+	from /usr/local/rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+	from /usr/local/rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+I, [2014-10-28T13:18:22.180250 #6778]  INFO -- : reaped #<Process::Status: pid 6781 exit 0> worker=0
+I, [2014-10-28T13:18:22.180944 #6778]  INFO -- : master complete
+I, [2014-10-28T13:18:32.870624 #7007]  INFO -- : unlinking existing socket=/tmp/unicorn.applebees.sock
+I, [2014-10-28T13:18:32.871191 #7007]  INFO -- : listening on addr=/tmp/unicorn.applebees.sock fd=10
+I, [2014-10-28T13:18:32.871505 #7007]  INFO -- : worker=0 spawning...
+I, [2014-10-28T13:18:32.873083 #7007]  INFO -- : master process ready
+I, [2014-10-28T13:18:32.886366 #7010]  INFO -- : worker=0 spawned pid=7010
+I, [2014-10-28T13:18:32.886644 #7010]  INFO -- : Refreshing Gem list
+I, [2014-10-28T13:18:33.104668 #7010]  INFO -- : worker=0 ready
