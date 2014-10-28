@@ -1,0 +1,4 @@
+domain: "maxrogers.me",
+webserver: "puma",
+app_type: "unicorn",
+database: "mongodb"
