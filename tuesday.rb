@@ -119,8 +119,8 @@ class Tuesday
     if @@menu[:webserver] == "puma" || @@menu[:webserver] == "unicorn"
       #kill the old process
       if @@kitchen[@@menu[:path]]
-        #system "kill #{@@kitchen[@@menu[:path]][:pid]}"
-        #@@kitchen.delete(@@menu[:path])
+        system "kill #{@@kitchen[@@menu[:path]][:pid]}"
+        @@kitchen.delete(@@menu[:path])
       end
     end
     #create the new server
@@ -138,7 +138,7 @@ class Tuesday
       system "unicorn -c #{@@menu[:path]}/unicorn.rb -D"
       #now store the newly created pid
       str = ""
-      File.open("#{@@menu[:path]}/pids/unicorn.pid", 'r') do |file|
+      File.open("#{@@menu[:path]}/pids/unicorn.pid") do |file|
         str += file
       end
       @@menu[:pid] = str.strip
