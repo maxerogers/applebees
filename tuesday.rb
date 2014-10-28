@@ -70,7 +70,7 @@ class Tuesday
         puts "#{@@menu[:webserver]} is already installed"
       else
         puts "You don't have #{@@menu[:webserver]}  installed don't worry I got you"
-        puts `gem install #{@@menu[:webserver]} `
+        system "gem install #{@@menu[:webserver]}"
       end
     else
       puts "I'm sorry I don't recognize that web server.....you will have to manually set it up :/ sorry"
