@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
-#use system to get the process messages for the user
-#use `` for quick process messages and need the return as a string
+#use system "ls" to give the unix messages for the user
+#use `ls` for quick unix messages or want to save it as a string
+#don't use exec "ls" as it switches the shell to that new unix process from our ruby one.
 #require 'colorize' #This could add some color to the std outputs
 
 class Tuesday
@@ -10,6 +11,9 @@ class Tuesday
     #path
     #database
     #webserver
+    #num_workers
+    #worker_timeout
+    #nginx_timeout
     #pid
   @@kitchen_path = "/usr/local/bin/kitchen"
   def self.kitchen_path
@@ -17,22 +21,10 @@ class Tuesday
   end
   def self.installs
     puts "#{"#"*5}Installation#{"#"*5}"
-    #check ruby gem version
-    str = ""
-    File.open("#{@@menu[:path].strip}/Gemfile").each do |f|
-      str += f
-    end
-    @@menu[:ruby_version] = str[/ruby "....."/,0][6..10] #Will need to fix this in the future for JRuby support
-    if @@menu[:ruby_version].nil?
-      puts "You have no ruby version declared in your Gemfile. Please update it."
-      abort
-    else
-      #puts "I see you are using ruby #{@@menu[:ruby_version]}"
-      #puts "rvm use #{@@menu[:ruby_version]}"
-      #system "rvm use #{@@menu[:ruby_version]}"
-      #install the gems
-      system "bundle install"
-    end
+
+    #If already installed than bundle/rvm should be working
+    #maybe check for a Gemfile
+    system "bundle install"
 
     #check if nginx is installed
     if `which nginx` == ""
@@ -85,6 +77,7 @@ class Tuesday
     begin
       # Exceptions raised by this code will
       # be caught by the following rescue clause
+
       @@menu = eval("{#{IO.readlines("Menufile").join.strip}}")
     rescue
       puts "It appears you are missing or have a corrupt Menufile. Please consult http://tuesdayrb.me for support"
@@ -97,21 +90,21 @@ class Tuesday
   end
 
   def self.make_unicorn(app_name,path)
-    "working_directory '#{path}'
+"working_directory '#{path}'
 
-      pid '#{path}/pids/unicorn.pid'
+pid '#{path}/pids/unicorn.pid'
 
-      stderr_path '#{path}/logs/unicorn.log'
-      stdout_path '#{path}/logs/unicorn.log'
+stderr_path '#{path}/logs/unicorn.log'
+stdout_path '#{path}/logs/unicorn.log'
 
-      listen '/tmp/unicorn.#{app_name}.sock'
+listen '/tmp/unicorn.#{app_name}.sock'
 
-      # Number of processes
-      # worker_processes 4
-      worker_processes 1
+# Number of processes
+# worker_processes 4
+worker_processes 1
 
-      # Time-out
-      timeout 30"
+# Time-out
+timeout 30"
   end
 
   def self.make_unicorn_for_nginx(app_name,path,domain_name)
@@ -151,6 +144,7 @@ server {
     output = `pwd`
     app_name = output.split("/").last
     app_name.strip!
+    puts app_name
     @@menu[:app_name] = app_name
     case @@menu[:webserver]
     when "unicorn"
@@ -176,7 +170,12 @@ server {
   end
   def self.restart_servers
     #system "service nginx restart"
-    str = make_unicorn_for_nginx(@@menu[:app_name],@@menu[:path],@@menu[:domain])
+    #Readd all the servers to nginx
+    str = ""
+    @@kitchen.each do |key,value|
+      str = make_unicorn_for_nginx(value[:app_name],value[:path],value[:domain])
+    end
+    #str = make_unicorn_for_nginx(@@menu[:app_name],@@menu[:path],@@menu[:domain])
     File.open("/etc/nginx/conf.d/default.conf", 'w') { |file| file.write("#{str}") }
     system "service nginx restart"
   end
@@ -190,13 +189,33 @@ server {
     #puts str
     @@kitchen = eval str
     @@kitchen ||= {}
-    puts @@kitchen
-    #@@kitchen = {chicken: "Good"}
-    #File.open(@@kitchen_path, 'w') { |file| file.write("") }
+    #puts @@kitchen
+  end
+
+  def self.reset
+    #load kitchen
+    stockKitchen
+    #kill all processes
+    #and delete the leftover files
+    @@kitchen.each do |key,value|
+      system "kill #{value[:pid]}"
+      system "rm -rf #{value[:path]}/pids"
+      system "rm -rf #{value[:path]}/logs"
+    end
+    #delete the nginx configuration files
+    File.open("/etc/nginx/conf.d/default.conf", 'w') { |file| file.write("") }
+    #kill nginx
+    system "service nginx restart"
+    #clean the kitchen
+    File.open(@@kitchen_path, 'w') { |file| file.write("") }
   end
 
   def self.run
-	 puts "Welcome to Ruby-Tuesdays	"
+	 puts "Welcome to Ruby-Tuesdays.rb"
+   puts "Please note, currently Tuesday kills all free roaming daemons before releasing the new ones."
+   #Check if it needs to restart
+
+   #otherwise
    readMenu
    stockKitchen
    installs
@@ -205,7 +224,7 @@ server {
   end
 end
 
-$PROGRAM_NAME = 'Tuesday'
+#$PROGRAM_NAME = 'Tuesday'
 #puts $0 # This is an alias for the same thing.
 
 #Setting up the kitchen in localbin
