@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 #use system to get the process messages for the user
 #use `` for quick process messages and need the return as a string
+require 'colorize'
+
 class Tuesday
   #kitchen
   #domain
